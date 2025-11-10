@@ -21,7 +21,7 @@ Enter the measurements of the breast mass to predict if it is Benign (1) or Mali
 # You can customize the input type based on the feature (e.g., st.number_input, st.slider)
 input_data = {}
 feature_names = ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean',
-                 'compactness_mean', 'concavity_mean', 'concave_points_mean', 'concave_points_mean', 'symmetry_mean',
+                 'compactness_mean', 'concavity_mean', 'concave_points_mean', 'symmetry_mean',
                  'fractal_dimension_mean', 'radius_se', 'texture_se', 'perimeter_se', 'area_se',
                  'smoothness_se', 'compactness_se', 'concavity_se', 'concave_points_se',
                  'symmetry_se', 'fractal_dimension_se', 'radius_worst', 'texture_worst',
@@ -37,6 +37,9 @@ for feature in feature_names:
 
 # Convert input data to DataFrame
 input_df = pd.DataFrame([input_data])
+
+# Ensure the order of columns in the input DataFrame matches the order of features the model was trained on
+input_df = input_df[feature_names]
 
 # Scale the input data
 input_scaled = scaler.transform(input_df)
