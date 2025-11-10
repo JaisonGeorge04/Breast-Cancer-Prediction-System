@@ -30,9 +30,7 @@ feature_names = ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', '
                  'fractal_dimension_worst']
 
 for feature in feature_names:
-    # Added a check to avoid duplicate keys if 'concave_points_mean' appears twice
-    if feature not in input_data:
-        input_data[feature] = st.number_input(f'Enter {feature}', value=0.0)
+    input_data[feature] = st.number_input(f'Enter {feature}', value=0.0)
 
 
 # Convert input data to DataFrame
